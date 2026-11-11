@@ -1,0 +1,6 @@
+# Block access to dotfiles (.env, .git, .htaccess, ...)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.git
+Options -Indexes
