@@ -18,7 +18,7 @@ const CONFIG = {
   /** Prices for the ticker; "" turns live prices off (the fallback values in index.html stay). */
   PRICES_ENDPOINT: "api/prices.php",
   /** Cloudflare Turnstile site key (public). On localhost Cloudflare's always-pass test key is used. */
-  TURNSTILE_SITE_KEY: "",
+  TURNSTILE_SITE_KEY: "0x4AAAAAAF8nXtZBqKrFArs4",
   /** Meta Pixel ID; "" turns it off. Never loaded on localhost. */
   META_PIXEL_ID: "1141837911869784",
   /** How long the success message shows before the page goes to the account. */
