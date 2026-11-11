@@ -3,23 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Invierte en Oro y Petróleo desde 250 $ | Commodities España</title>
+    <title>Por qué el oro y el petróleo están llamando la atención de los españoles</title>
     <meta
       name="description"
-      content="Opera con oro y petróleo con un depósito mínimo de 250 $, atención personalizada y un especialista dedicado. Registro en 1 minuto."
+      content="Inflación, un euro que compra menos y ahorros que pierden valor: descubre por qué los españoles de más de 30 años miran al oro y al petróleo, desde 250 $."
     />
-    <meta
-      property="og:title"
-      content="Invierte en Oro y Petróleo desde 250 $"
-    />
+    <meta property="og:title" content="¿Tus ahorros están perdiendo frente al oro?" />
     <meta
       property="og:description"
-      content="Especialista dedicado, atención personalizada y depósito con tarjeta o transferencia. Regístrate en 1 minuto."
+      content="Descubre por qué el oro y el petróleo han entrado en el radar de quien quiere proteger su patrimonio."
     />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
     <meta property="og:locale" content="es_ES" />
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- No favicon: an empty data URL stops browsers requesting /favicon.ico. -->
     <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,1079 +27,256 @@
     <script src="index.js" defer></script>
   </head>
   <body>
-    <div class="min-h-screen">
-      <!-- ============================== Header + price ticker ============================== -->
-      <header
-        class="sticky top-0 z-40 border-b border-deep-foreground/10 bg-deep/95 text-deep-foreground backdrop-blur"
-      >
-        <div
-          class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3"
-        >
-          <div class="flex items-center gap-2 font-display text-lg font-bold">
-            <span
-              class="grid h-9 w-9 place-items-center rounded-lg bg-gold-gradient text-accent-foreground"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" />
-                <path d="M15 6h1v4" />
-                <path d="m6.134 14.768.866-.5 2 3.464" />
-                <circle cx="16" cy="8" r="6" />
-              </svg>
-            </span>
-            Commodities <span class="text-gold">España</span>
-          </div>
-          <button
-            type="button"
-            data-scroll-to-form
-            class="rounded-lg bg-gold-gradient px-5 py-2.5 text-sm font-bold text-accent-foreground shadow-gold"
-          >
-            Regístrate
-          </button>
-        </div>
-        <div
-          class="overflow-hidden border-t border-deep-foreground/10 py-2 text-xs"
-        >
-          <!-- Filled twice by index.js from api/prices.php; these are fallback values. -->
-          <div
-            class="flex w-max animate-marquee gap-10 whitespace-nowrap"
-            data-ticker
-          >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">ORO (XAU/USD)</b> 4042,40
-              <span class="text-success">+0,30%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">PETRÓLEO BRENT</b> 92,62
-              <span class="text-success">+1,24%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">PETRÓLEO WTI</b> 87,03
-              <span class="text-success">+1,15%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">PLATA</b> 52,66
-              <span class="text-success">+2,79%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">GAS NATURAL</b> 3,364
-              <span class="text-success">+2,06%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">EUR/USD</b> 1,1620
-              <span class="text-destructive">-0,12%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">ORO (XAU/USD)</b> 4042,40
-              <span class="text-success">+0,30%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">PETRÓLEO BRENT</b> 92,62
-              <span class="text-success">+1,24%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">PETRÓLEO WTI</b> 87,03
-              <span class="text-success">+1,15%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">PLATA</b> 52,66
-              <span class="text-success">+2,79%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">GAS NATURAL</b> 3,364
-              <span class="text-success">+2,06%</span></span
-            >
-            <span class="flex gap-2"
-              ><b class="text-deep-foreground/70">EUR/USD</b> 1,1620
-              <span class="text-destructive">-0,12%</span></span
-            >
-          </div>
-        </div>
-      </header>
-
-      <!-- ============================== Hero + first form ============================== -->
-      <section
-        class="relative overflow-hidden bg-deep-gradient text-deep-foreground"
-      >
-        <div
-          class="mx-auto grid max-w-7xl gap-10 px-5 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-20"
-        >
-          <div class="flex flex-col justify-center">
-            <h1
-              class="text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl"
-            >
-              Invierte en <span class="text-gold-gradient">Oro</span> y
-              <span class="text-gold-gradient">Petróleo</span> desde 250 $
-            </h1>
-            <p class="mt-5 max-w-xl text-lg text-deep-foreground/80">
-              Diversifica tu patrimonio con los activos que todo el mundo busca
-              en tiempos de incertidumbre. Con un especialista a tu lado en cada
-              paso.
-            </p>
-            <div class="mt-8 grid max-w-lg grid-cols-3 gap-4">
-              <div
-                class="rounded-xl border border-deep-foreground/15 bg-deep-foreground/5 p-4"
-              >
-                <div class="font-display text-2xl font-bold text-gold">
-                  250 $
-                </div>
-                <div class="text-xs text-deep-foreground/70">
-                  Depósito mínimo
-                </div>
-              </div>
-              <div
-                class="rounded-xl border border-deep-foreground/15 bg-deep-foreground/5 p-4"
-              >
-                <div class="font-display text-2xl font-bold text-gold">
-                  Tarjeta
-                </div>
-                <div class="text-xs text-deep-foreground/70">
-                  Depósito rápido
-                </div>
-              </div>
-              <div
-                class="rounded-xl border border-deep-foreground/15 bg-deep-foreground/5 p-4"
-              >
-                <div class="font-display text-2xl font-bold text-gold">
-                  24/5
-                </div>
-                <div class="text-xs text-deep-foreground/70">
-                  Soporte personal
-                </div>
-              </div>
-            </div>
-            <div
-              class="mt-8 hidden overflow-hidden rounded-2xl border border-gold/30 lg:block"
-            >
-              <!-- Photo with the live gold price drawn on the phone screen (updated by index.js). -->
-              <svg
-                viewBox="0 60 1024 720"
-                preserveAspectRatio="xMidYMid slice"
-                class="block aspect-[1024/720] w-full"
-                role="img"
-                aria-label="Inversor siguiendo el precio del oro en el móvil"
-              >
-                <image
-                  href="assets/hero-trader.jpg"
-                  width="1024"
-                  height="1280"
-                />
-                <g font-family="Manrope, sans-serif">
-                  <text
-                    x="150"
-                    y="526"
-                    font-size="18"
-                    font-weight="700"
-                    class="fill-deep-foreground"
-                    data-gold-price
-                  >
-                    $4,042.40
-                  </text>
-                  <text
-                    x="152"
-                    y="541"
-                    font-size="9"
-                    class="fill-success"
-                    data-gold-change
-                  >
-                    ▲ 12,20 (+0,30%)
-                  </text>
-                </g>
-              </svg>
-            </div>
-          </div>
-          <!-- Signup form (filled by index.js). -->
-          <div
-            id="registro"
-            class="scroll-mt-24 self-center"
-            data-lead-slot
-          ></div>
-        </div>
-      </section>
-
-      <!-- ============================== Why gold and oil ============================== -->
-      <section class="mx-auto max-w-7xl px-5 py-20">
-        <h2 class="text-center text-3xl font-bold sm:text-4xl">
-          ¿Por qué oro y petróleo?
-        </h2>
-        <p class="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
-          Activos reales, negociados en todo el mundo, que históricamente cobran
-          protagonismo cuando la inflación erosiona el ahorro.
-        </p>
-        <div class="mt-12 grid gap-6 md:grid-cols-3">
-          <div class="rounded-2xl border border-border bg-card p-7 shadow-card">
-            <span
-              class="grid h-12 w-12 place-items-center rounded-xl bg-gold-gradient text-accent-foreground"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" />
-                <path d="M15 6h1v4" />
-                <path d="m6.134 14.768.866-.5 2 3.464" />
-                <circle cx="16" cy="8" r="6" />
-              </svg>
-            </span>
-            <h3 class="mt-5 text-xl font-bold">Protección del patrimonio</h3>
-            <p class="mt-2 text-muted-foreground">
-              El oro se busca desde hace siglos como reserva de valor frente a
-              la inflación y la devaluación de la moneda.
-            </p>
-          </div>
-          <div class="rounded-2xl border border-border bg-card p-7 shadow-card">
-            <span
-              class="grid h-12 w-12 place-items-center rounded-xl bg-gold-gradient text-accent-foreground"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path
-                  d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"
-                />
-              </svg>
-            </span>
-            <h3 class="mt-5 text-xl font-bold">Demanda global</h3>
-            <p class="mt-2 text-muted-foreground">
-              El petróleo mueve la economía mundial: las noticias y los
-              movimientos de precio crean oportunidades cada día.
-            </p>
-          </div>
-          <div class="rounded-2xl border border-border bg-card p-7 shadow-card">
-            <span
-              class="grid h-12 w-12 place-items-center rounded-xl bg-gold-gradient text-accent-foreground"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M16 7h6v6" />
-                <path d="m22 7-8.5 8.5-5-5L2 17" />
-              </svg>
-            </span>
-            <h3 class="mt-5 text-xl font-bold">Opera al alza y a la baja</h3>
-            <p class="mt-2 text-muted-foreground">
-              Puedes buscar oportunidades tanto cuando el precio sube como
-              cuando baja.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== 3 steps ============================== -->
-      <section class="bg-secondary py-20">
-        <div class="mx-auto max-w-7xl px-5">
-          <h2 class="text-center text-3xl font-bold sm:text-4xl">
-            Empieza en 3 sencillos pasos
-          </h2>
-          <div class="mt-12 grid gap-8 md:grid-cols-3">
-            <div class="relative text-center">
-              <div
-                class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-deep text-gold shadow-card"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  class="h-8 w-8"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="m16 11 2 2 4-4" />
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                </svg>
-              </div>
-              <span
-                class="absolute left-1/2 top-0 ml-6 grid h-8 w-8 place-items-center rounded-full bg-gold-gradient text-sm font-bold text-accent-foreground"
-                >1</span
-              >
-              <h3 class="mt-5 text-xl font-bold">Regístrate</h3>
-              <p class="mt-2 text-muted-foreground">
-                Te lleva menos de 1 minuto. Solo nombre, e-mail, teléfono y 3
-                preguntas.
-              </p>
-            </div>
-            <div class="relative text-center">
-              <div
-                class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-deep text-gold shadow-card"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  class="h-8 w-8"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M13 2a9 9 0 0 1 9 9" />
-                  <path d="M13 6a5 5 0 0 1 5 5" />
-                  <path
-                    d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"
-                  />
-                </svg>
-              </div>
-              <span
-                class="absolute left-1/2 top-0 ml-6 grid h-8 w-8 place-items-center rounded-full bg-gold-gradient text-sm font-bold text-accent-foreground"
-                >2</span
-              >
-              <h3 class="mt-5 text-xl font-bold">Habla con un especialista</h3>
-              <p class="mt-2 text-muted-foreground">
-                Un asesor te llama para conocer tu perfil y resolver tus dudas.
-              </p>
-            </div>
-            <div class="relative text-center">
-              <div
-                class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-deep text-gold shadow-card"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  class="h-8 w-8"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
-                  />
-                  <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
-                </svg>
-              </div>
-              <span
-                class="absolute left-1/2 top-0 ml-6 grid h-8 w-8 place-items-center rounded-full bg-gold-gradient text-sm font-bold text-accent-foreground"
-                >3</span
-              >
-              <h3 class="mt-5 text-xl font-bold">Empieza con 250 $</h3>
-              <p class="mt-2 text-muted-foreground">
-                Deposita con tarjeta o transferencia y haz tus primeras
-                operaciones con acompañamiento.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== For whom ============================== -->
-      <section
-        class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2"
+    <!-- Pre-landing page (/descubra). Its buttons lead to the signup page, cadastro.html. -->
+    <div class="min-h-screen bg-background">
+      <div
+        class="bg-destructive px-4 py-2 text-center text-sm font-bold text-destructive-foreground"
       >
         <svg
-          viewBox="0 0 1024 1280"
-          preserveAspectRatio="xMidYMid slice"
-          class="block h-[520px] w-full overflow-hidden rounded-3xl shadow-card"
-          role="img"
-          aria-label="Inversor con lingotes de oro"
+          viewBox="0 0 24 24"
+          class="mr-1 inline h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
         >
-          <image href="assets/hero-trader.jpg" width="1024" height="1280" />
-          <g font-family="Manrope, sans-serif">
-            <text
-              x="150"
-              y="526"
-              font-size="18"
-              font-weight="700"
-              class="fill-deep-foreground"
-              data-gold-price
-            >
-              $4,042.40
-            </text>
-            <text
-              x="152"
-              y="541"
-              font-size="9"
-              class="fill-success"
-              data-gold-change
-            >
-              ▲ 12,20 (+0,30%)
-            </text>
-          </g>
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
         </svg>
-        <div>
-          <h2 class="text-3xl font-bold sm:text-4xl">
-            Pensado para quien ya tiene experiencia de vida, no necesariamente
-            de mercado
-          </h2>
-          <div class="mt-8 grid gap-5 sm:grid-cols-2">
-            <div class="flex gap-4">
-              <svg
-                viewBox="0 0 24 24"
-                class="h-7 w-7 shrink-0 text-primary"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"
-                />
-              </svg>
-              <div>
-                <h3 class="font-bold">Gestor de cuenta personal</h3>
-                <p class="text-sm text-muted-foreground">
-                  Una persona que te conoce por tu nombre.
-                </p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <svg
-                viewBox="0 0 24 24"
-                class="h-7 w-7 shrink-0 text-primary"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M12 7v14" />
-                <path
-                  d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
-                />
-              </svg>
-              <div>
-                <h3 class="font-bold">Material formativo</h3>
-                <p class="text-sm text-muted-foreground">
-                  Clases y guías en español, desde cero.
-                </p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <svg
-                viewBox="0 0 24 24"
-                class="h-7 w-7 shrink-0 text-primary"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-                <path d="M12 18h.01" />
-              </svg>
-              <div>
-                <h3 class="font-bold">App sencilla</h3>
-                <p class="text-sm text-muted-foreground">
-                  Sigue el oro y el petróleo desde el móvil.
-                </p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <svg
-                viewBox="0 0 24 24"
-                class="h-7 w-7 shrink-0 text-primary"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M3 3v16a2 2 0 0 0 2 2h16" />
-                <path d="M18 17V9" />
-                <path d="M13 17V5" />
-                <path d="M8 17v-3" />
-              </svg>
-              <div>
-                <h3 class="font-bold">Análisis diarios</h3>
-                <p class="text-sm text-muted-foreground">
-                  Resúmenes del mercado directamente en tu e-mail.
-                </p>
-              </div>
-            </div>
-          </div>
-          <button
-            type="button"
-            data-scroll-to-form
-            class="mt-10 inline-block rounded-lg bg-gold-gradient px-8 py-4 text-lg font-bold text-accent-foreground shadow-gold"
-          >
-            Quiero mi especialista
-          </button>
-        </div>
-      </section>
+        ALERTA: las plazas de atención con un especialista para hoy se cierran en
+        <span class="font-mono" data-countdown>15:00</span>
+      </div>
 
-      <!-- ============================== Testimonials ============================== -->
-      <section class="bg-deep-gradient py-20 text-deep-foreground">
-        <div class="mx-auto max-w-7xl px-5">
-          <h2 class="text-center text-3xl font-bold sm:text-4xl">
-            Lo que dicen nuestros clientes
-          </h2>
-          <div class="mt-12 grid gap-6 md:grid-cols-3">
-            <figure
-              class="rounded-2xl border border-deep-foreground/15 bg-deep-foreground/5 p-7"
-            >
-              <div
-                class="flex gap-1 text-gold"
-                data-stars
-                aria-label="5 estrellas"
-              ></div>
-              <blockquote class="mt-4 text-deep-foreground/90">
-                “Siempre quise invertir en oro, pero me parecía complicado. El
-                especialista me lo explicó todo con paciencia.”
-              </blockquote>
-              <figcaption class="mt-5 text-sm">
-                <b>Carlos M., 47</b> ·
-                <span class="text-deep-foreground/60">Madrid</span>
-              </figcaption>
-            </figure>
-            <figure
-              class="rounded-2xl border border-deep-foreground/15 bg-deep-foreground/5 p-7"
-            >
-              <div
-                class="flex gap-1 text-gold"
-                data-stars
-                aria-label="5 estrellas"
-              ></div>
-              <blockquote class="mt-4 text-deep-foreground/90">
-                “Empecé con el mínimo para conocerlo. La atención personalizada
-                marcó la diferencia.”
-              </blockquote>
-              <figcaption class="mt-5 text-sm">
-                <b>Ana R., 39</b> ·
-                <span class="text-deep-foreground/60">Valencia</span>
-              </figcaption>
-            </figure>
-            <figure
-              class="rounded-2xl border border-deep-foreground/15 bg-deep-foreground/5 p-7"
-            >
-              <div
-                class="flex gap-1 text-gold"
-                data-stars
-                aria-label="5 estrellas"
-              ></div>
-              <blockquote class="mt-4 text-deep-foreground/90">
-                “Quería diversificar más allá de la cuenta de ahorro. Ahora sigo
-                el petróleo en la app cada día.”
-              </blockquote>
-              <figcaption class="mt-5 text-sm">
-                <b>Roberto S., 55</b> ·
-                <span class="text-deep-foreground/60">Sevilla</span>
-              </figcaption>
-            </figure>
-          </div>
-          <p class="mt-6 text-center text-xs text-deep-foreground/50">
-            Testimonios ilustrativos. Los resultados pasados no garantizan
-            resultados futuros.
-          </p>
-        </div>
-      </section>
+      <article class="mx-auto max-w-3xl px-5 py-10">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary">
+          Economía · <span data-today></span>
+        </p>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl">
+          Mientras tus ahorros <span class="text-destructive">pierden frente a la inflación</span>,
+          los españoles de más de 30 años se están pasando al
+          <span class="text-gold-gradient">oro</span> y al
+          <span class="text-gold-gradient">petróleo</span>
+        </h1>
+        <p class="mt-5 text-xl text-muted-foreground">
+          La cesta de la compra no para de subir, la cuenta de ahorro apenas da intereses y quien dejó
+          el dinero parado se ha quedado atrás. Mira lo que están haciendo ahora los más atentos.
+        </p>
 
-      <!-- ============================== FAQ ============================== -->
-      <section class="mx-auto max-w-3xl px-5 py-20">
-        <h2 class="text-center text-3xl font-bold sm:text-4xl">
-          Preguntas frecuentes
-        </h2>
-        <div class="faq mt-10">
-          <details class="border-b">
-            <summary
-              class="flex cursor-pointer items-center justify-between py-4 text-left text-lg font-semibold hover:underline"
-            >
-              ¿Cuál es el depósito mínimo?
-              <svg
-                viewBox="0 0 24 24"
-                class="h-4 w-4 shrink-0 text-muted-foreground"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <p class="pb-4 text-base text-muted-foreground">
-              Puedes empezar con 250 $ (unos 215 €), con tarjeta o transferencia
-              bancaria.
-            </p>
-          </details>
-          <details class="border-b">
-            <summary
-              class="flex cursor-pointer items-center justify-between py-4 text-left text-lg font-semibold hover:underline"
-            >
-              ¿Necesito experiencia?
-              <svg
-                viewBox="0 0 24 24"
-                class="h-4 w-4 shrink-0 text-muted-foreground"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <p class="pb-4 text-base text-muted-foreground">
-              No. Tu especialista y nuestro material formativo te ayudan desde
-              el primer paso.
-            </p>
-          </details>
-          <details class="border-b">
-            <summary
-              class="flex cursor-pointer items-center justify-between py-4 text-left text-lg font-semibold hover:underline"
-            >
-              ¿Hay riesgo?
-              <svg
-                viewBox="0 0 24 24"
-                class="h-4 w-4 shrink-0 text-muted-foreground"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <p class="pb-4 text-base text-muted-foreground">
-              Sí. Operar con materias primas conlleva el riesgo de perder el
-              capital invertido. Invierte solo lo que puedas permitirte perder y
-              cuenta con asesoramiento.
-            </p>
-          </details>
-          <details class="border-b">
-            <summary
-              class="flex cursor-pointer items-center justify-between py-4 text-left text-lg font-semibold hover:underline"
-            >
-              ¿Cómo retiro mi dinero?
-              <svg
-                viewBox="0 0 24 24"
-                class="h-4 w-4 shrink-0 text-muted-foreground"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <p class="pb-4 text-base text-muted-foreground">
-              Puedes solicitar las retiradas desde la plataforma y recibirlas en
-              tu cuenta bancaria en España.
-            </p>
-          </details>
-          <details class="border-b">
-            <summary
-              class="flex cursor-pointer items-center justify-between py-4 text-left text-lg font-semibold hover:underline"
-            >
-              ¿Cuál es el horario de atención?
-              <svg
-                viewBox="0 0 24 24"
-                class="h-4 w-4 shrink-0 text-muted-foreground"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </summary>
-            <p class="pb-4 text-base text-muted-foreground">
-              Atención en español de lunes a viernes, 24 horas, mientras el
-              mercado está abierto.
-            </p>
-          </details>
-        </div>
-      </section>
-
-      <!-- ============================== Closing CTA + second form ============================== -->
-      <section class="bg-secondary py-20">
-        <div
-          class="mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-2"
-        >
-          <div>
-            <h2 class="text-3xl font-bold sm:text-5xl">
-              Tu patrimonio merece más que una
-              <span class="text-primary">cuenta de ahorro</span>.
-            </h2>
-            <p
-              class="mt-4 text-lg text-muted-foreground"
-            >
-              Regístrate ahora y un especialista en oro y petróleo se pondrá en
-              contacto contigo.
-            </p>
-          </div>
-          <div class="self-center" data-lead-slot></div>
-        </div>
-      </section>
-
-      <footer class="bg-deep py-10 text-sm text-deep-foreground/60">
-        <div class="mx-auto max-w-7xl space-y-4 px-5">
-          <p>
-            <b class="text-deep-foreground/80">Aviso de riesgo:</b> Operar con
-            materias primas y CFD conlleva un alto riesgo y puede ocasionar la
-            pérdida de todo el capital invertido. No es adecuado para todos los
-            inversores. Ningún resultado está garantizado. Este sitio está
-            dirigido únicamente a mayores de 30 años residentes en España.
-          </p>
-          <p>
-            © <span data-year>2026</span> Commodities España · Política de
-            Privacidad · Términos de Uso
-          </p>
-        </div>
-      </footer>
-    </div>
-
-    <!-- ============================== Templates used by index.js ============================== -->
-
-    <!-- Signup form: 2 steps, then the success message. One copy goes in each [data-lead-slot]. -->
-    <template id="lead-form-template">
-      <div
-        class="rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-card sm:p-8"
-      >
-        <!-- Step 3: success -->
-        <div class="py-8 text-center" data-step="3" hidden>
+        <div class="mt-8 overflow-hidden rounded-2xl shadow-card">
+          <!-- Photo with the live gold price drawn on the phone screen (updated by index.js). -->
           <svg
-            viewBox="0 0 24 24"
-            class="mx-auto h-14 w-14 text-success"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
+            viewBox="0 60 1024 720"
+            preserveAspectRatio="xMidYMid slice"
+            class="block aspect-[1024/720] w-full"
+            role="img"
+            aria-label="Inversor siguiendo el precio del oro en el móvil"
           >
-            <circle cx="12" cy="12" r="10" />
-            <path d="m9 12 2 2 4-4" />
+            <image href="assets/hero-trader.jpg" width="1024" height="1280" />
+            <g font-family="Manrope, sans-serif">
+              <text
+                x="150"
+                y="526"
+                font-size="18"
+                font-weight="700"
+                class="fill-deep-foreground"
+                data-gold-price
+              >
+                $4,042.40
+              </text>
+              <text x="152" y="541" font-size="9" class="fill-success" data-gold-change>
+                ▲ 12,20 (+0,30%)
+              </text>
+            </g>
           </svg>
-          <h3 class="mt-4 text-2xl font-bold">
-            ¡Registro recibido, <span data-first-name></span>!
-          </h3>
-          <p class="mt-2 text-muted-foreground">
-            Un especialista te llamará en breve.
-            Atento a tu móvil.
-          </p>
-          <p
-            class="mt-4 text-sm font-medium text-foreground"
-            data-redirecting
-            hidden
-          >
-            Redirigiendo a tu cuenta...
-          </p>
         </div>
 
-        <div data-steps>
-          <div class="mb-5 flex items-center justify-between">
-            <h3 class="text-xl font-bold" data-step-title>
-              Abre tu cuenta gratis
-            </h3>
-            <span
-              class="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-secondary-foreground"
-            >
-              Paso <span data-step-number>1</span> de 2
-            </span>
+        <!-- Live quotes. data-quote-price / data-quote-change are filled by index.js. -->
+        <div class="mt-6 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-xl border border-border bg-card p-4">
+            <div class="flex items-center gap-2 text-sm text-muted-foreground">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" />
+                <path d="M15 6h1v4" />
+                <path d="m6.134 14.768.866-.5 2 3.464" />
+                <circle cx="16" cy="8" r="6" />
+              </svg>
+              Oro hoy
+            </div>
+            <div class="mt-1 font-display text-2xl font-bold" data-quote-price="GC=F">4.042,40 $</div>
+            <div class="text-sm font-semibold text-success" data-quote-change="GC=F">+0,30 % hoy</div>
           </div>
-          <div class="mb-6 h-1.5 overflow-hidden rounded-full bg-muted">
-            <div
-              class="h-full bg-gold-gradient transition-all"
-              style="width: 50%"
-              data-progress
-            ></div>
+          <div class="rounded-xl border border-border bg-card p-4">
+            <div class="flex items-center gap-2 text-sm text-muted-foreground">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" />
+              </svg>
+              Petróleo Brent
+            </div>
+            <div class="mt-1 font-display text-2xl font-bold" data-quote-price="BZ=F">92,62 $</div>
+            <div class="text-sm font-semibold text-success" data-quote-change="BZ=F">+1,24 % hoy</div>
           </div>
+          <div class="rounded-xl border border-border bg-card p-4">
+            <div class="flex items-center gap-2 text-sm text-muted-foreground">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 10h12" />
+                <path d="M4 14h9" />
+                <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2" />
+              </svg>
+              1 euro vale
+            </div>
+            <div class="mt-1 font-display text-2xl font-bold" data-quote-price="EURUSD=X">1,1620 $</div>
+            <div class="text-sm font-semibold text-destructive" data-quote-change="EURUSD=X">-0,12 % hoy</div>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-muted-foreground">Cotizaciones reales, actualizadas cada minuto.</p>
 
-          <!-- Step 1: contact details -->
-          <div class="space-y-3" data-step="1">
-            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <div>
-                <input
-                  data-field="firstName"
-                  class="w-full rounded-lg border border-input bg-background px-4 py-3 text-base outline-none focus:border-accent focus:ring-2 focus:ring-ring"
-                  placeholder="Nombre"
-                  autocomplete="given-name"
-                  maxlength="50"
-                />
-                <p
-                  class="mt-1 text-xs font-medium text-destructive"
-                  role="alert"
-                  data-error="firstName"
-                  hidden
-                ></p>
-              </div>
-              <div>
-                <input
-                  data-field="lastName"
-                  class="w-full rounded-lg border border-input bg-background px-4 py-3 text-base outline-none focus:border-accent focus:ring-2 focus:ring-ring"
-                  placeholder="Apellidos"
-                  autocomplete="family-name"
-                  maxlength="50"
-                />
-                <p
-                  class="mt-1 text-xs font-medium text-destructive"
-                  role="alert"
-                  data-error="lastName"
-                  hidden
-                ></p>
-              </div>
-            </div>
+        <h2 class="mt-12 text-3xl font-bold">La verdad que tu banco no te cuenta</h2>
+        <p class="mt-4 text-lg leading-relaxed">
+          Hace pocos años la onza de oro costaba menos de 2.000 $. Hoy supera los
+          <b><span data-gold-round>4.042</span> $</b>. Mientras tanto, cada euro que guardas en la
+          cuenta de ahorro compra un poco menos cada mes.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed">
+          Grandes fondos y bancos centrales de todo el mundo están comprando oro. El petróleo sigue
+          siendo el combustible de la economía global.
+          <b>
+            La pregunta no es si deberías mirar estos activos, sino cuánto tiempo más vas a esperar.
+          </b>
+        </p>
+
+        <div class="my-10">
+          <a
+            href="cadastro"
+            data-cta
+            class="group mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-xl bg-gold-gradient px-6 py-5 text-center text-lg font-extrabold text-accent-foreground shadow-gold transition-transform hover:scale-[1.02] sm:text-xl"
+          >
+            QUIERO VER CÓMO EMPEZAR AHORA
+            <svg viewBox="0 0 24 24" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <h2 class="text-3xl font-bold">¿Por qué oro y petróleo, y por qué ahora?</h2>
+        <ul class="mt-6 space-y-4">
+          <li class="flex gap-3 rounded-xl bg-secondary p-5">
+            <svg viewBox="0 0 24 24" class="mt-0.5 h-6 w-6 shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+              <path d="m9 11 3 3L22 4" />
+            </svg>
             <div>
-              <input
-                data-field="email"
-                class="w-full rounded-lg border border-input bg-background px-4 py-3 text-base outline-none focus:border-accent focus:ring-2 focus:ring-ring"
-                type="email"
-                inputmode="email"
-                autocomplete="email"
-                placeholder="Tu mejor e-mail"
-                maxlength="255"
-              />
-              <p
-                class="mt-1 text-xs font-medium text-destructive"
-                role="alert"
-                data-error="email"
-                hidden
-              ></p>
+              <b class="text-lg">El oro protege desde hace 5.000 años</b>
+              <p class="text-muted-foreground">
+                En crisis, guerras e inflación, el gran dinero corre hacia el oro.
+              </p>
             </div>
+          </li>
+          <li class="flex gap-3 rounded-xl bg-secondary p-5">
+            <svg viewBox="0 0 24 24" class="mt-0.5 h-6 w-6 shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+              <path d="m9 11 3 3L22 4" />
+            </svg>
             <div>
-              <!-- Prefix and input share one border, so they always line up and never wrap apart. -->
-              <div
-                class="flex items-stretch overflow-hidden rounded-lg border border-input bg-background focus-within:border-accent focus-within:ring-2 focus-within:ring-ring"
-                data-phone-box
-              >
-                <span
-                  aria-hidden="true"
-                  class="flex shrink-0 items-center gap-2 whitespace-nowrap border-r border-input bg-muted px-3 text-base font-semibold text-muted-foreground"
-                >
-                  <svg
-                    viewBox="0 0 28 20"
-                    class="h-4 w-[22px] shrink-0 rounded-[2px]"
-                    role="presentation"
-                  >
-                    <rect width="28" height="20" fill="#aa151b" />
-                    <rect y="5" width="28" height="10" fill="#f1bf00" />
-                  </svg>
-                  +34
-                </span>
-                <input
-                  data-field="phone"
-                  aria-label="Teléfono móvil (+34)"
-                  class="min-w-0 flex-1 bg-transparent px-4 py-3 text-base outline-none"
-                  type="tel"
-                  inputmode="numeric"
-                  autocomplete="tel-national"
-                  placeholder="612 34 56 78"
-                  maxlength="16"
-                />
-              </div>
-              <p
-                class="mt-1 text-xs font-medium text-destructive"
-                role="alert"
-                data-error="phone"
-                hidden
-              ></p>
+              <b class="text-lg">El petróleo se mueve todos los días</b>
+              <p class="text-muted-foreground">
+                Las noticias globales provocan movimientos fuertes, al alza y a la baja.
+              </p>
             </div>
-            <!-- Honeypot: hidden from people and screen readers; bots fill it. -->
-            <input
-              type="text"
-              name="website"
-              data-field="website"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-              class="absolute -left-[9999px] h-0 w-0 opacity-0"
-            />
-            <label class="flex items-start gap-3 pt-1 text-sm">
-              <input
-                type="checkbox"
-                class="mt-1 h-4 w-4 accent-primary"
-                data-field="over30"
-              />
-              <span>Confirmo que tengo <strong>30 años o más</strong></span>
-            </label>
-            <p
-              class="text-sm font-medium text-destructive"
-              data-form-error
-              hidden
-            ></p>
-            <button
-              type="button"
-              data-next
-              class="flex w-full items-center justify-center gap-2 rounded-lg bg-gold-gradient px-6 py-4 text-lg font-bold text-accent-foreground shadow-gold transition hover:brightness-105"
+          </li>
+          <li class="flex gap-3 rounded-xl bg-secondary p-5">
+            <svg viewBox="0 0 24 24" class="mt-0.5 h-6 w-6 shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+              <path d="m9 11 3 3L22 4" />
+            </svg>
+            <div>
+              <b class="text-lg">No necesitas ser rico para empezar</b>
+              <p class="text-muted-foreground">
+                Con solo 250 $ (unos <span data-eur-250>215</span> €) ya puedes operar.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-3 rounded-xl bg-secondary p-5">
+            <svg viewBox="0 0 24 24" class="mt-0.5 h-6 w-6 shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+              <path d="m9 11 3 3L22 4" />
+            </svg>
+            <div>
+              <b class="text-lg">No estarás solo</b>
+              <p class="text-muted-foreground">
+                Un especialista en español te acompaña desde el primer día.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-12 rounded-2xl bg-deep-gradient p-8 text-deep-foreground">
+          <svg viewBox="0 0 24 24" class="h-10 w-10 text-gold" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+            <polyline points="16 7 22 7 22 13" />
+          </svg>
+          <h2 class="mt-4 text-3xl font-bold">Quien espera, paga más caro.</h2>
+          <p class="mt-3 text-lg text-deep-foreground/80">
+            Cada día que lo aplazas es un día más con tu dinero perdiendo valor. El registro lleva
+            menos de 1 minuto y un especialista se pondrá en contacto contigo por WhatsApp.
+          </p>
+          <div class="mt-6">
+            <a
+              href="cadastro"
+              data-cta
+              class="group mx-auto flex w-full max-w-xl items-center justify-center gap-3 rounded-xl bg-gold-gradient px-6 py-5 text-center text-lg font-extrabold text-accent-foreground shadow-gold transition-transform hover:scale-[1.02] sm:text-xl"
             >
-              Continuar
-              <svg
-                viewBox="0 0 24 24"
-                class="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
+              SÍ, QUIERO HABLAR CON UN ESPECIALISTA
+              <svg viewBox="0 0 24 24" class="h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
-            </button>
-          </div>
-
-          <!-- Step 2: the 3 questions, consent and captcha -->
-          <div class="space-y-5" data-step="2" hidden>
-            <fieldset class="space-y-2" data-choice="experience">
-              <legend class="text-sm font-semibold text-foreground">
-                1. ¿Qué experiencia tienes invirtiendo?
-              </legend>
-              <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                <button type="button" data-value="none">
-                  Nunca he operado
-                </button>
-                <button type="button" data-value="beginner">
-                  Principiante (ya lo he probado)
-                </button>
-                <button type="button" data-value="experienced">
-                  Con experiencia
-                </button>
-              </div>
-            </fieldset>
-            <fieldset class="space-y-2" data-choice="goal">
-              <legend class="text-sm font-semibold text-foreground">
-                2. ¿Cuál es tu objetivo principal?
-              </legend>
-              <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                <button type="button" data-value="extra_income">
-                  Ingresos extra cada mes
-                </button>
-                <button type="button" data-value="grow_savings">
-                  Hacer crecer mi patrimonio
-                </button>
-                <button type="button" data-value="inflation">
-                  Protegerme de la inflación
-                </button>
-                <button type="button" data-value="learn">
-                  Aprender a operar
-                </button>
-              </div>
-            </fieldset>
-            <fieldset class="space-y-2" data-choice="deposit">
-              <legend class="text-sm font-semibold text-foreground">
-                3. ¿Puedes empezar con el depósito mínimo de 250 $?
-              </legend>
-              <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                <button type="button" data-value="yes">
-                  Sí, empiezo con 250 $ o más
-                </button>
-                <button type="button" data-value="not_yet">Todavía no</button>
-              </div>
-            </fieldset>
-            <label class="flex items-start gap-3 text-xs text-muted-foreground">
-              <input
-                type="checkbox"
-                class="mt-0.5 h-4 w-4 accent-primary"
-                data-field="consent"
-              />
-              <span
-                >Acepto que me contacten por teléfono y e-mail, y
-                acepto la Política de Privacidad (RGPD).</span
-              >
-            </label>
-            <div class="min-h-[65px]" data-captcha></div>
-            <p class="text-xs text-muted-foreground" data-captcha-failed hidden>
-              La verificación de seguridad no se ha cargado. Desactiva los
-              bloqueadores de anuncios en este sitio o recarga la página.
-            </p>
-            <p
-              class="text-sm font-medium text-destructive"
-              data-form-error
-              hidden
-            ></p>
-            <div class="flex gap-2">
-              <button
-                type="button"
-                data-back
-                class="rounded-lg border border-input px-4 py-4 text-sm font-semibold"
-              >
-                Volver
-              </button>
-              <button
-                type="button"
-                data-submit
-                class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gold-gradient px-6 py-4 text-lg font-bold text-accent-foreground shadow-gold transition hover:brightness-105 disabled:opacity-60"
-              >
-                Quiero empezar ahora
-              </button>
-            </div>
-          </div>
-
-          <div
-            class="mt-5 flex items-center justify-center gap-4 text-xs text-muted-foreground"
-          >
-            <span class="flex items-center gap-1">
-              <svg
-                viewBox="0 0 24 24"
-                class="h-3.5 w-3.5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-              Datos protegidos
-            </span>
-            <span class="flex items-center gap-1">
-              <svg
-                viewBox="0 0 24 24"
-                class="h-3.5 w-3.5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path
-                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-                />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-              Registro sin coste
-            </span>
+            </a>
           </div>
         </div>
+
+        <div class="mt-10 flex gap-3 rounded-xl border border-border p-5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-destructive" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+          </svg>
+          <p>
+            Contenido publicitario. Operar con materias primas y CFD conlleva un alto riesgo y puede
+            ocasionar la pérdida de todo el capital invertido. Los resultados pasados no garantizan
+            resultados futuros. Dirigido a mayores de 30 años residentes en España.
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Full-screen loader shown for 2 s after a button click, before cadastro.html opens. -->
+    <div
+      role="status"
+      aria-live="polite"
+      data-route-loader
+      hidden
+      class="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-deep/95 px-6 text-deep-foreground backdrop-blur-sm"
+    >
+      <div class="relative grid h-20 w-20 place-items-center">
+        <span
+          class="absolute inset-0 animate-spin rounded-full border-4 border-gold/20 border-t-gold motion-reduce:animate-none"
+        ></span>
+        <span class="grid h-12 w-12 place-items-center rounded-xl bg-gold-gradient text-accent-foreground">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" />
+            <path d="M15 6h1v4" />
+            <path d="m6.134 14.768.866-.5 2 3.464" />
+            <circle cx="16" cy="8" r="6" />
+          </svg>
+        </span>
       </div>
-    </template>
+      <p class="text-center font-display text-lg font-bold sm:text-xl">Preparando tu registro…</p>
+      <div class="h-1.5 w-56 overflow-hidden rounded-full bg-deep-foreground/15">
+        <div class="h-full bg-gold-gradient ease-out" style="width: 0%" data-route-loader-bar></div>
+      </div>
+    </div>
   </body>
 </html>

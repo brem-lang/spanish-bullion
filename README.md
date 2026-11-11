@@ -1,11 +1,12 @@
 # Spanish Bullion – static version
 
-Spanish-language landing page for visitors in Spain, adapted from the brasil-bullion `/cadastro` page, for hosting that runs
+Spanish-language landing page for visitors in Spain, adapted from the brasil-bullion `/descubra` and `/cadastro` pages, for hosting that runs
 PHP (Apache, cPanel, …) instead of the Node app. No build step.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The page. The signup form is a `<template>` at the bottom. |
+| `index.html` | Pre-landing article (`/descubra`), the page visitors land on. Its buttons show a 2 s loader, then open `cadastro.html` with the same query string (utm_*, click_id). |
+| `cadastro.html` | Signup page (`/cadastro`). The signup form is a `<template>` at the bottom. |
 | `index.css` | Styles (generated from the app's Tailwind build; additions at the end). |
 | `index.js` | Form, validation, captcha, Meta Pixel, live prices. **Settings at the top.** |
 | `api/submit-lead.php` | Receives the form, checks it, verifies the captcha, sends the lead to the CRM. |
@@ -21,6 +22,9 @@ PHP (Apache, cPanel, …) instead of the Node app. No build step.
    Behind Cloudflare, also set `TRUST_CLOUDFLARE=1`.
 3. In `index.js`, set `CONFIG.TURNSTILE_SITE_KEY`.
 4. On nginx, block `.env` yourself (`location ~ /\. { deny all; }`): `.htaccess` only works on Apache.
+5. Clean URLs `/descubra` and `/cadastro` work on Apache through `.htaccess` (needs `mod_rewrite`). On nginx add
+   `location = /descubra { try_files /index.html =404; }` and `location = /cadastro { try_files /cadastro.html =404; }`.
+   Ads can point at `/`, `/descubra` or `/index.html`: all show the same page.
 
 Without the captcha keys, every lead is rejected on the live site. On `localhost`, Cloudflare's
 always-pass test keys are used automatically.
@@ -39,8 +43,10 @@ always-pass test keys are used automatically.
 ## Testing locally
 
 ```sh
-php -S localhost:8000
+php -S localhost:8000 router.php
 ```
 
-Then open http://localhost:8000. Leads only go through with a real `BASE_ENDPOINT` and
+Then open http://localhost:8000/descubra. `router.php` copies the `.htaccess` clean URLs
+(`/descubra`, `/cadastro`), because PHP's built-in server and Node dev servers like Live Server
+ignore `.htaccess`. Leads only go through with a real `BASE_ENDPOINT` and
 `BASE_API_KEY` in `.env`.

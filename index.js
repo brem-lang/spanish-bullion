@@ -5,8 +5,12 @@
  *   hidden honeypot field, posts to api/submit-lead.php.
  * - After signup: a success message, then this same tab goes to the account (autologin).
  *   No new tab is opened.
- * - Live prices in the ticker and on the phone in the photo (api/prices.php).
+ * - Live prices in the ticker, the quote cards and on the phone in the photo (api/prices.php).
+ * - Pre-landing page (index.html): countdown, today's date, and buttons that show a short
+ *   loader before opening the signup page (cadastro.html), keeping the query string.
  * - Meta Pixel (not on localhost).
+ *
+ * Both pages load this file; each part only runs when its elements are on the page.
  */
 "use strict";
 
@@ -23,6 +27,10 @@ const CONFIG = {
   META_PIXEL_ID: "1141837911869784",
   /** How long the success message shows before the page goes to the account. */
   AUTOLOGIN_DELAY_MS: 1500,
+  /** Signup page the pre-landing buttons open (the visitor's query string is added). */
+  SIGNUP_PAGE: "cadastro",
+  /** How long the loader shows after a pre-landing button click. */
+  ROUTE_LOADER_MS: 2000,
 };
 
 // =================================================================================
@@ -445,6 +453,22 @@ async function loadPrices() {
   // Twice, so the marquee loops without a gap.
   document.querySelector("[data-ticker]")?.replaceChildren(...items, ...items.map((n) => n.cloneNode(true)));
 
+  // Quote cards on the pre-landing page.
+  for (const q of quotes) {
+    document.querySelectorAll(`[data-quote-price="${q.symbol}"]`).forEach((el) => {
+      el.textContent = `${fmt(q.price, DECIMALS[q.symbol] ?? 2)} $`;
+    });
+    document.querySelectorAll(`[data-quote-change="${q.symbol}"]`).forEach((el) => {
+      el.textContent = `${q.changePct >= 0 ? "+" : ""}${fmt(q.changePct)} % hoy`;
+      el.classList.toggle("text-success", q.changePct >= 0);
+      el.classList.toggle("text-destructive", q.changePct < 0);
+    });
+  }
+  const eurUsd = quotes.find((q) => q.symbol === "EURUSD=X");
+  if (eurUsd?.price > 0) {
+    document.querySelectorAll("[data-eur-250]").forEach((el) => (el.textContent = fmt(250 / eurUsd.price, 0)));
+  }
+
   const gold = quotes.find((q) => q.symbol === "GC=F");
   if (!gold) return;
   const up = gold.change >= 0;
@@ -454,6 +478,62 @@ async function loadPrices() {
   document.querySelectorAll("[data-gold-change]").forEach((t) => {
     t.textContent = `${up ? "▲" : "▼"} ${fmt(Math.abs(gold.change))} (${up ? "+" : "-"}${fmt(Math.abs(gold.changePct))}%)`;
     t.setAttribute("class", up ? "fill-success" : "fill-destructive");
+  });
+  document.querySelectorAll("[data-gold-round]").forEach((el) => (el.textContent = fmt(gold.price, 0)));
+}
+
+// ------------------------------ Pre-landing page ------------------------------
+
+/** 15-minute countdown in the top alert bar. */
+function startCountdown(el) {
+  let s = 15 * 60;
+  const show = () => (el.textContent = `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`);
+  show();
+  const id = setInterval(() => {
+    s = Math.max(0, s - 1);
+    show();
+    if (!s) clearInterval(id);
+  }, 1000);
+}
+
+function setupPrelander() {
+  const today = new Date().toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
+  document.querySelectorAll("[data-today]").forEach((el) => (el.textContent = today));
+  document.querySelectorAll("[data-countdown]").forEach(startCountdown);
+
+  const ctas = document.querySelectorAll("a[data-cta]");
+  if (!ctas.length) return;
+  const target = CONFIG.SIGNUP_PAGE + location.search; // keeps utm_* and click_id
+  const loader = document.querySelector("[data-route-loader]");
+  const bar = document.querySelector("[data-route-loader-bar]");
+  let leaving = false;
+
+  ctas.forEach((a) => {
+    a.href = target;
+    a.addEventListener("click", (e) => {
+      // Ctrl/Cmd/Shift/middle clicks keep the browser's normal "open in new tab" behaviour.
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !loader) return;
+      e.preventDefault();
+      if (leaving) return;
+      leaving = true;
+      loader.hidden = false;
+      if (bar) {
+        bar.style.transition = `width ${CONFIG.ROUTE_LOADER_MS}ms ease-out`;
+        requestAnimationFrame(() => requestAnimationFrame(() => (bar.style.width = "100%")));
+      }
+      setTimeout(() => location.assign(target), CONFIG.ROUTE_LOADER_MS);
+    });
+  });
+
+  // Coming back with the Back button can restore the page with the loader still showing.
+  window.addEventListener("pageshow", (e) => {
+    if (!e.persisted || !loader) return;
+    leaving = false;
+    loader.hidden = true;
+    if (bar) {
+      bar.style.transition = "none";
+      bar.style.width = "0%";
+    }
   });
 }
 
@@ -482,6 +562,7 @@ function init() {
     slot.replaceChildren(form);
     setupLeadForm(form, tracking);
   });
+  setupPrelander();
 
   loadPrices();
   setInterval(loadPrices, 60000);

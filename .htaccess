@@ -4,3 +4,18 @@
 </FilesMatch>
 RedirectMatch 404 /\.git
 Options -Indexes
+
+# Clean URLs: /descubra → index.html (pre-landing), /cadastro → cadastro.html (signup).
+# The query string (utm_*, click_id) is kept automatically.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Someone opens /cadastro.html or /index.html directly → 301 to the clean URL (query string kept).
+    # THE_REQUEST only matches what the browser asked for, so the internal rewrites below don't loop.
+    RewriteCond %{THE_REQUEST} \s/+(.*/)?cadastro\.html[\s?] [NC]
+    RewriteRule ^(.*/)?cadastro\.html$ /$1cadastro [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+    RewriteRule ^(.*/)?index\.html$ /$1descubra [R=301,L]
+
+    RewriteRule ^descubra/?$ index.html [L]
+    RewriteRule ^cadastro/?$ cadastro.html [L]
+</IfModule>
