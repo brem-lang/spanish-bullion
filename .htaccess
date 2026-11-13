@@ -3,6 +3,8 @@
     Require all denied
 </FilesMatch>
 RedirectMatch 404 /\.git
+# Server-only code and tests
+RedirectMatch 404 ^/(api/lib|tests)/
 Options -Indexes
 
 # Clean URLs: /descubra → index.html (pre-landing), /cadastro → cadastro.html (signup).

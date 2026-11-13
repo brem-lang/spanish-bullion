@@ -4,12 +4,15 @@
  *
  * Checks the lead (same rules as index.js), verifies the Cloudflare Turnstile captcha,
  * flags likely bots, then forwards the lead to the CRM with the API key from ../.env.
- * The API key never reaches the browser.
+ * The API key never reaches the browser. Leads the CRM accepted are then copied to the
+ * leads log (lib/lead-log.php), after the visitor already has the response.
  *
  * Adapted from the brasil-bullion app's src/lib/lead-proxy.server.ts.
  */
 
 declare(strict_types=1);
+
+require __DIR__ . '/lib/lead-log.php';
 
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
@@ -31,6 +34,34 @@ function respond(int $status, array $body): never
 {
     http_response_code($status);
     echo json_encode($body, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+/**
+ * Like respond(), but first hands the response to the visitor, then runs $after (the leads
+ * log), so slow or failing background work cannot delay or break the response.
+ */
+function respond_then(int $status, array $body, callable $after): never
+{
+    $out = (string) json_encode($body, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    http_response_code($status);
+    header('Content-Length: ' . strlen($out));
+    header('Connection: close');
+    echo $out;
+    ignore_user_abort(true);
+    if (function_exists('fastcgi_finish_request')) {
+        fastcgi_finish_request(); // php-fpm (the live server)
+    } elseif (function_exists('litespeed_finish_request')) {
+        litespeed_finish_request();
+    } else {
+        while (ob_get_level() > 0) ob_end_flush();
+        flush();
+    }
+    try {
+        $after();
+    } catch (Throwable) {
+        // never affects the visitor
+    }
     exit;
 }
 
@@ -102,6 +133,9 @@ function rate_limited(string $ip): bool
     return $data['count'] > RATE_LIMIT_MAX;
 }
 
+// post_json() and domain_receives_mail() are the only network calls; tests/fakes.php
+// defines its own versions first so the tests never reach the CRM, Cloudflare or DNS.
+if (!function_exists('post_json')) {
 /** POST JSON with curl; returns [status, decoded body or null], status 0 on network error. */
 function post_json(string $url, array $payload, array $headers, int $timeout): array
 {
@@ -126,6 +160,7 @@ function post_json(string $url, array $payload, array $headers, int $timeout): a
     }
     $decoded = json_decode((string) $body, true);
     return [$status, is_array($decoded) ? $decoded : null];
+}
 }
 
 // --- Field checks: same rules and messages as index.js ------------------------------
@@ -188,11 +223,13 @@ function check_email(string $raw): array
     return [$value, null];
 }
 
+if (!function_exists('domain_receives_mail')) {
 /** Can the e-mail's domain receive mail (MX, or A as fallback)? */
 function domain_receives_mail(string $email): bool
 {
     $domain = substr($email, strrpos($email, '@') + 1) . '.';
     return checkdnsrr($domain, 'MX') || checkdnsrr($domain, 'A');
+}
 }
 
 /** Spanish mobile (starts with 6 or 71–74) → [+34..., null] or [null, message]. */
@@ -303,6 +340,9 @@ if (!preg_match('/^[A-Za-z0-9._\-]{1,128}$/', $clickId)) {
 $website = substr($str('website'), 0, 200);
 $fillMs  = is_int($input['fillMs'] ?? null) && $input['fillMs'] >= 0 ? $input['fillMs'] : null;
 $token   = substr($str('captchaToken'), 0, 2048);
+// Landing/field/click times, forwarded only to the leads log (never to the CRM).
+// Malformed timing is dropped, never rejects the lead.
+$timing  = sanitize_timing($input['timing'] ?? null);
 
 // --- Configuration -------------------------------------------------------------------
 
@@ -441,4 +481,9 @@ if (is_string($autologin)) {
 
 $leadId = $result['data']['lead_id'] ?? '-';
 log_line(sprintf('%s → accepted lead_id=%s', $sent, is_scalar($leadId) ? (string) $leadId : '-'));
-respond(200, array_filter(['success' => true, 'autologin_url' => $autologin], fn($v) => $v !== null));
+// Only accepted leads go to the leads log, and only after the visitor has the response.
+respond_then(
+    200,
+    array_filter(['success' => true, 'autologin_url' => $autologin], fn($v) => $v !== null),
+    fn() => send_lead_log($payload, $timing, lead_log_config($env), 'post_json'),
+);

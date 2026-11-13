@@ -21,7 +21,7 @@ const CONFIG = {
   LEAD_ENDPOINT: "api/submit-lead.php",
   /** Prices for the ticker; "" turns live prices off (the fallback values in index.html stay). */
   PRICES_ENDPOINT: "api/prices.php",
-  /** Cloudflare Turnstile site key (public). On localhost Cloudflare's always-pass test key is used. */
+  /** Cloudflare Turnstile site key (public). On localhost Cloudflare's always-pass test key is always used. */
   TURNSTILE_SITE_KEY: "0x4AAAAAAF8nXtZBqKrFArs4",
   /** Meta Pixel ID; "" turns it off. Never loaded on localhost. */
   META_PIXEL_ID: "1141837911869784",
@@ -37,7 +37,9 @@ const CONFIG = {
 
 const IS_LOCAL = ["localhost", "127.0.0.1", "", "[::1]"].includes(location.hostname);
 const TEST_SITE_KEY = "1x00000000000000000000AA";
-const SITE_KEY = CONFIG.TURNSTILE_SITE_KEY || (IS_LOCAL ? TEST_SITE_KEY : "");
+// The real site key only works on the live domain, so localhost always uses the test key
+// (the server pairs it with the test secret when TURNSTILE_SECRET_KEY is empty in .env).
+const SITE_KEY = IS_LOCAL ? TEST_SITE_KEY : CONFIG.TURNSTILE_SITE_KEY;
 const CAPTCHA_ERROR = "Confirma la verificación de seguridad e inténtalo de nuevo.";
 const GENERIC_ERROR = "No se ha podido enviar. Inténtalo de nuevo en unos instantes.";
 
@@ -208,6 +210,9 @@ function setupLeadForm(root, tracking) {
   const field = (name) => $(`[data-field="${name}"]`);
   const answers = { experience: "", goal: "", deposit: "" };
   const shownAt = Date.now(); // sent as fillMs so the server can flag instant submits
+  // Landing/field/click times for the leads log (form-timing.js; skipped if it didn't load).
+  const timer = typeof createFormTimer === "function" ? createFormTimer() : null;
+  timer?.formLoaded();
   let captchaToken = "";
   let widgetId;
   let loading = false;
@@ -243,18 +248,23 @@ function setupLeadForm(root, tracking) {
   // --- step 1 fields ---
   for (const name of STEP1_FIELDS) {
     const input = field(name);
+    input.addEventListener("focus", () => timer?.focus(name));
     input.addEventListener("input", () => {
+      timer?.input(name);
       if (name === "phone") input.value = formatEsPhone(input.value);
       if (name === "email") input.value = input.value.replace(/\s/g, "");
       // While typing, only clear an error once the value becomes valid (no nagging mid-word).
       if (!$(`[data-error="${name}"]`).hidden && !CHECKS[name](input.value)) showFieldError(name, "");
     });
     input.addEventListener("blur", () => {
+      timer?.blur(name);
       if (input.value) showFieldError(name, CHECKS[name](input.value));
     });
   }
+  for (const name of ["over30", "consent"]) field(name).addEventListener("change", () => timer?.input(name));
 
   $("[data-next]").addEventListener("click", () => {
+    timer?.continueClick();
     let firstBad;
     for (const name of STEP1_FIELDS) {
       const msg = CHECKS[name](field(name).value);
@@ -278,6 +288,7 @@ function setupLeadForm(root, tracking) {
       buttons.forEach((b) => (b.className = `${CHOICE_BASE} ${answers[key] === b.dataset.value ? CHOICE_ON : CHOICE_OFF}`));
     buttons.forEach((b) =>
       b.addEventListener("click", () => {
+        timer?.input(key);
         answers[key] = b.dataset.value;
         paint();
       }),
@@ -327,6 +338,7 @@ function setupLeadForm(root, tracking) {
   // --- submit ---
   $("[data-submit]").addEventListener("click", async () => {
     if (loading) return;
+    const timing = timer?.submitClick();
     const lead = {
       firstName: field("firstName").value.trim().replace(/\s+/g, " "),
       lastName: field("lastName").value.trim().replace(/\s+/g, " "),
@@ -342,6 +354,7 @@ function setupLeadForm(root, tracking) {
       website: field("website").value || undefined,
       fillMs: Math.max(0, Date.now() - shownAt),
       captchaToken: captchaToken || undefined,
+      timing,
     };
 
     // Same checks as the server, in form order.

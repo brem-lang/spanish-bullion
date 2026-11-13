@@ -9,7 +9,10 @@ PHP (Apache, cPanel, …) instead of the Node app. No build step.
 | `cadastro.html` | Signup page (`/cadastro`). The signup form is a `<template>` at the bottom. |
 | `index.css` | Styles (generated from the app's Tailwind build; additions at the end). |
 | `index.js` | Form, validation, captcha, Meta Pixel, live prices. **Settings at the top.** |
+| `form-timing.js` | Records how the form was filled, for the leads log. |
 | `api/submit-lead.php` | Receives the form, checks it, verifies the captcha, sends the lead to the CRM. |
+| `api/lib/lead-log.php` | Copies accepted leads (and the timing report) to the leads log. |
+| `tests/` | Tests (see below). Not served. |
 | `api/prices.php` | Live prices for the ticker (Yahoo Finance, cached 60 s). |
 | `assets/hero-trader.jpg` | Hero photo. |
 | `.env.example` | Server settings: copy to `.env`. |
@@ -39,6 +42,11 @@ always-pass test keys are used automatically.
   autologin link) this tab goes to the account after 1.5 s. No new tab is opened.
 - **Meta Pixel:** PageView on load, Lead after the CRM accepts. Never on `localhost`.
 - **Logs:** each lead writes one `[submit-lead]` line to the PHP error log (no personal data).
+- **Leads log:** each lead the CRM accepted is also posted to `LEADS_LOG_ENDPOINT` (with
+  `LEADS_LOG_API_KEY` from `.env`; nothing is sent without it), after the visitor already has
+  the response. It holds the exact CRM payload plus a readable `timing` report of how the form
+  was filled (`form-timing.js` records it in the browser; `api/lib/lead-log.php` writes the
+  report). Timing never goes to the CRM, and bad timing data never rejects a lead.
 
 ## Testing locally
 
@@ -50,3 +58,12 @@ Then open http://localhost:8000/descubra. `router.php` copies the `.htaccess` cl
 (`/descubra`, `/cadastro`), because PHP's built-in server and Node dev servers like Live Server
 ignore `.htaccess`. Leads only go through with a real `BASE_ENDPOINT` and
 `BASE_API_KEY` in `.env`.
+
+## Tests
+
+```sh
+php tests/run.php                        # server (needs php-cgi next to php; never calls the CRM)
+node --test tests/form-timing.test.mjs   # browser timer
+```
+
+`SHOW_REPORT=1 php tests/run.php` prints a sample timing report.
